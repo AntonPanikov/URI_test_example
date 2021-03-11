@@ -1,0 +1,46 @@
+consul.client.registration.enabled: false
+
+---
+consul:
+    client:
+      discovery:
+        enabled: false
+      health-check: false
+
+
+---
+micronaut:
+    caches:
+        test-cache:
+            initial-capacity: 1
+            maximum-size: 20
+            expire-after-access: 1d
+            expire-after-write: 1d
+            
+---
+endpoints:
+  all:
+    sensitive: false
+  metrics:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+    details-visible: 'ANONYMOUS'
+    discovery-client:
+      enabled: false
+  loggers:
+    enabled: true
+    write-sensitive: false
+  caches:
+    enabled: true
+
+---
+micronaut:
+  server:
+    host: 'localhost'
+#    port: 8086
+---
+logger:
+  levels:
+    io.micronaut.http: TRACE
